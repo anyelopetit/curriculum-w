@@ -1,0 +1,36 @@
+.container
+  .row
+    .col-lg-2
+      .arrow-back.btn.btn-default
+        = link_to admin_google_adwords_path, class: "", "data-position" => "bottom", "data-tooltip" => t("keppler.actions.back") do
+          %i.fa.fa-chevron-left
+          Volver
+          .clearfix
+    .clearfix
+  .row
+    .listing.col-lg-12.col-xs-12
+      %section.content-header.index-header
+        %h1
+          = t("keppler.modules.#{controller_path.underscore}")
+        %ol.breadcrumb
+          %li
+            %a{:href => "#"}
+              %i.fa.fa-dashboard
+              = t("keppler.modules.#{action_name.underscore}")
+
+      .box.slice-box
+        .box-body.no-padding
+          %table.table.table-striped
+            %tbody
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.url")
+                %td.display-value.fs-body-1.tc-black-2= @google_adword.url
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.campaign_name")
+                %td.display-value.fs-body-1.tc-black-2= @google_adword.campaign_name
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.description")
+                %td.display-value.fs-body-1.tc-black-2= @google_adword.description
+              %tr.list-row
+                %th.display-label= t("activerecord.attributes.script")
+                %td.display-value.fs-body-1.tc-black-2= @google_adword.script

@@ -1,0 +1,74 @@
+!!!
+%html
+  %head
+    = render 'app/layouts/head'
+  %body
+    %nav
+      .avatar
+      .name
+      %ul#menu
+        = link_to '#home' do
+          %li Home
+        = link_to '#about' do
+          %li About
+        = link_to '#portfolio' do
+          %li Portfolio
+        = link_to '#contact' do
+          %li Contact
+    .cover
+      %header#home
+        %center.info-container.col-lg-4.col-xs-12
+          .avatar= image_tag 'app/avatar1.jpg'
+          %h3.name Anyelo Petit
+          .description
+            Desarrollador web con más de 2 años de experiencia tanto en front-end utilizando metodologías como Lean UX, Resposive Design y patrones de diseño como Bootstrap o Materialize, como en back-end utilizando metodologías de desarrollo Agile UX y SCRUM, especializado en entorno Ruby on Rails.
+          %ul.social-medias
+            - ['twitter', 'facebook', 'instagram', 'linkedin', 'github'].each do |social|
+              = link_to "https://www.#{social}.com/anyelopetit", title: "Follow me in #{social.humanize}" do
+                %li= icon social
+        .hobbies.col-lg-8.col-xs-12
+          %h1
+            I&nbsp;
+            = '<3'
+            &nbsp;
+            .typing
+    %section#about
+      .row
+        .skills.col-xs-12.col-sm-6
+          %h2.center Skills
+          %hr.separator
+          -# %span Ruby on Rails
+          .progress
+            .progress-bar.rails{ role: 'progressbar', 'aria-valuenow' => '50', 'aria-valuemin' => '0', 'aria-valuemax' => '100' } Ruby on Rails
+          -# %span JavaScript
+          .progress
+            .progress-bar.js{ role: 'progressbar', 'aria-valuenow' => '50', 'aria-valuemin' => '0', 'aria-valuemax' => '100' } JavaScript
+          -# %span HTML5
+          .progress
+            .progress-bar.html{ role: 'progressbar', 'aria-valuenow' => '50', 'aria-valuemin' => '0', 'aria-valuemax' => '100' } HTML5
+          -# %span CSS3
+          .progress
+            .progress-bar.css{ role: 'progressbar', 'aria-valuenow' => '50', 'aria-valuemin' => '0', 'aria-valuemax' => '100' } CSS3
+        .experience.col-xs-12.col-sm-6
+          %h2.center Experience
+          %hr.separator
+          .vertical-line
+          %table.timeline
+            %tbody
+              %tr
+                %th
+                  .timeline-icon= icon 'laptop'
+                %td.timeline-description Coordinador de Desarrollo Back-end en Slice Group (Enero 2018 - Actualidad)
+              %tr
+                %th
+                  .timeline-icon= icon 'code'
+                %td.timeline-description Desarrollador Back-end en Slice Group (Julio 2017 - Diciembre 2017)
+              %tr
+                %th
+                  .timeline-icon= icon 'pencil'
+                %td.timeline-description Desarrollador Front-end en Slice Group (Septiembre 2016 - Junio 2017)
+    %section#skills
+    %section#experience
+    %section#contact
+    %footer
+    = scripts

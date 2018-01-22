@@ -1,0 +1,56 @@
+#index-container{ :controller => "users" }
+  .container
+    .row
+      .listing.col-lg-12.col-xs-12
+        %section.content-header.index-header
+          %h1
+            = t("keppler.modules.#{controller_path.underscore}")
+          .toolbar
+            .mailbox-controls
+              = link_to reload_admin_users_path, class: "btn btn-default btn-sm", remote: true do
+                %i.fa.fa-refresh
+              / Check all button
+              .btn-group
+                %button.btn.btn-default.btn-sm.checkbox-toggle{:type => "button", "@click" => "selectAll()"}
+                  .pretty.p-default.p-curve.p-thick.p-smooth
+                    %input{ type:"checkbox", class: "filled-in", id: "checkbox-all", ":disabled"=>"checkItems ? disabled : ''"}
+                    .state.p-danger-o
+                      %label{ for: "checkbox-all" }
+                %a.btn.btn-default.btn-sm{:type => "button", "data-confirm" => "¿Estás seguro?", "data-method" => "delete", "v-bind:href" => "link", :rel => "nofollow", "v-show" => "checks" }
+                  %i.fa.fa-trash-o
+          %ol.breadcrumb
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-dashboard
+                = t("keppler.modules.#{action_name.underscore}")
+        .box.slice-box
+          .box-body.no-padding
+            %table.table.table-striped
+              %thead
+                - if @objects.size.zero?
+                  %tr
+                    %th{:style => 'text-align: center;'}
+                      %h6= t('keppler.messages.not_found_records', model:  t("keppler.models.pluralize.user"))
+                - else
+                  %tr
+                    %td
+                    %th
+                      Name
+                    %th
+                      Email
+                    %th
+                      Role
+                    %th{:style => "text-align: center;padding-right: 30px;"}
+                      Actions
+              %tbody#objects-container
+                = render 'admin/layouts/listing_preloader'
+                = render 'listing', objects: @objects
+
+        %center#paginator-module
+          = paginate @objects, window: 1
+
+  .listing-show
+    = render "description"
+  .mixed-btn
+    = link_to new_admin_user_path, class: "btn-float" do
+      %i.material-icons add
